@@ -1,0 +1,21 @@
+citHeader("To cite dlmap in publications use:")
+
+citEntry(entry = "Article",
+  title        = "{dlmap}: An {R} Package for Mixed Model QTL and Association Analysis",
+  author       = personList(as.person("B. Emma Huang"),
+                   as.person("Rohan Shah"),
+                   as.person("Andrew W. George")),
+  journal      = "Journal of Statistical Software",
+  year         = "2012",
+  volume       = "50",
+  number       = "6",
+  pages        = "1--22",
+  url          = "http://www.jstatsoft.org/v50/i06/",
+
+  textVersion  =
+  paste("B. Emma Huang, Rohan Shah, Andrew W. George (2012).",
+        "dlmap: An R Package for Mixed Model QTL and Association Analysis.",
+        "Journal of Statistical Software, 50(6), 1-22.",
+        "URL http://www.jstatsoft.org/v50/i06/.")
+)
+

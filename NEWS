@@ -1,0 +1,11 @@
+Version 1.11
+------------------------------------------------------------------------------
+* dlmap.asreml and dlmap.lme functions combined as a parameter (algorithm) in dl  map function
+
+* fixed bug in profileplot function
+
+* high-dimensional transform implemented for association mapping; will be 
+  performed if the number of markers on all chromosomes > number of individuals.  Internal improvement to computational efficiency. 
+
+* Functions renamed to remove additional "."; only retained for S3 functions and  functions which modify those from other packages (calc.genoprob2)
+
