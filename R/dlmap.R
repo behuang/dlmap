@@ -16,6 +16,7 @@ function(object, phename, baseModel, algorithm=c("asreml", "lme"), fixed=NULL, r
 
   set.seed(seed)
 
+  object$dfMerged$grp1 <- 1
   # Check objects
   if (missing(multtest))  multtest <- "holm"
 

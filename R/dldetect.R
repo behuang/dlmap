@@ -72,7 +72,7 @@ function(input, algorithm, filestem, ...)
 	
 	if (map.results$converge == FALSE) 	results$converge <- FALSE
 
-	sel.mrk <- which.max(map.results$wald)
+	sel.mrk <- grep(paste("C", jj, "M", sep=""), colnames(input$dfMrk[,2:ncol(input$dfMrk)]))[which.max(map.results$wald)]
 	markers[jj] <- sel.mrk
 	if (type=="f2")
 	 locations <- c(locations, paste("C", chrSet[jj], "M", sel.mrk, c("D", "A"), sep="")) else
