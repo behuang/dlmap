@@ -278,7 +278,7 @@ function(object, phename, baseModel, algorithm=c("asreml", "lme"), fixed=NULL, r
   if (sum(detqtl)>0) final.fixed <- paste(as.character(fixed.forma)[2], "~", as.character(fixed.forma)[3], "+", paste(loc.out$qtls$pos, collapse="+"), sep="")
 
   final.fixed <- as.formula(final.fixed)
-  mod.fin <- lm(final.fixed, data=object$dfMerged, na.action=na.omit)
+  mod.fin <- lm(final.fixed, data=object$dfMerged, na.action="na.omit")
 
   output <- list()
   output$input <- object
