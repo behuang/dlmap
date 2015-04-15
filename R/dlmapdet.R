@@ -56,6 +56,7 @@ function(input, algorithm, s.chr, chrSet, prevLoc=NULL, ...)
 
   ### in fact, this may need to be from a separate data frame 
   # Loop over positions on the selected chromosome
+## These are the indices in the matrix
   mrkloop <- unlist(lapply(strsplit(names(dfMerged)[setdiff(grep(paste("C", s.chr, "M", sep=""), colnames(dfMerged)[(nphe+1):ncol(dfMerged)]), match(prevLoc, colnames(dfMerged)[(nphe+1):ncol(dfMerged)]))+nphe], "M"), function(x) return(x[2])))
 
   if (type=="f2")
@@ -120,10 +121,10 @@ function(input, algorithm, s.chr, chrSet, prevLoc=NULL, ...)
 	names <- paste("C", s.chr, "M", mrkloop[jj], c("", "D", "A"), sep="")
 	if (model$coefficients$fixed[names(model$coefficients$fixed) %in% names]!=0) 	
 	if (type=="f2")
-	wald[mrkloop[jj]] <- waldtest.asreml(model, list(list(which(model$coefficients$fixed[names(model$coefficients$fixed) %in% names]!=0), "zero")))$zres$zwald
+	wald[jj] <- waldtest.asreml(model, list(list(which(model$coefficients$fixed[names(model$coefficients$fixed) %in% names]!=0), "zero")))$zres$zwald
 	else	{
 		cf <- summary(model, all=TRUE)$coef.fixed
-		wald[mrkloop[jj]] <- (cf[which(rownames(cf) %in% names),3])^2
+		wald[jj]] <- (cf[which(rownames(cf) %in% names),3])^2
 		}
   }
 
@@ -178,7 +179,7 @@ function(input, algorithm, s.chr, chrSet, prevLoc=NULL, ...)
 	model <- lme(fixed=formula$fixed, random=~1|grp1, data=gd, control=lmeControl(maxIter=input$maxit), na.action="na.omit")
 
 	# Get output - Wald statistic for position fixed effect
-	wald[mrkloop[jj]] <- anova(model, Terms=effectnames)[1,3]
+	wald[jj] <- anova(model, Terms=effectnames)[1,3]
   }
 } ## end of algorithm==lme  
  
