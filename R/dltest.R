@@ -239,14 +239,14 @@ function(input, algorithm, chrSet, prevLoc=NULL, ...)
   if (length(chrSet)==1)
   formula$random <- chrRE[chrSet]
 
-  full <- lme(fixed=formula$fixed, random=eval(parse(text=formula$random)), data=gd, control=lmeControl(maxIter=input$maxit), na.action=na.omit)
+  full <- lme(fixed=formula$fixed, random=eval(parse(text=formula$random)), data=gd, control=lmeControl(maxIter=input$maxit), na.action="na.omit")
 
   full.ll <- full$logLik
 
   # If there is only one chromosome in the subset, compare a full model to the model
   # with no random effects
   if (n.chrSet==1)
-    null.forma[[1]] <- lme(fixed=formula$fixed, data=gd, control=lmeControl(maxIter=input$maxit), na.action=na.omit)
+    null.forma[[1]] <- lme(fixed=formula$fixed, data=gd, control=lmeControl(maxIter=input$maxit), na.action="na.omit")
  
   # Otherwise, compare the full model to leave-one-VC-out models, removing 
   # each chromosome effect one at a time
@@ -259,7 +259,7 @@ function(input, algorithm, chrSet, prevLoc=NULL, ...)
     random.forma[[cc]] <- chrRE[setdiff(chrSet, chrSet[cc])]
   
     # Fit the null model, where we omit the specified chromosome random effect
-    null.forma[[cc]] <- lme(fixed=formula$fixed, random=eval(parse(text=random.forma[[cc]])), data=gd, control=lmeControl(maxIter=input$maxit), na.action=na.omit)
+    null.forma[[cc]] <- lme(fixed=formula$fixed, random=eval(parse(text=random.forma[[cc]])), data=gd, control=lmeControl(maxIter=input$maxit), na.action="na.omit")
 
     null.ll[cc] <- null.forma[[cc]]$logLik
   }

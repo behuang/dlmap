@@ -194,10 +194,10 @@ function(input, algorithm, s.chr, chrSet, prevLoc=NULL, ...)
 
 	# Fit model - different forms depending on relevant terms
 	if (length(chrSet)>1)
-	model <- lme(fixed=formula$fixed, random=eval(parse(text=formula$random)), data=gd, control=lmeControl(maxIter=input$maxit), na.action=na.omit)
+	model <- lme(fixed=formula$fixed, random=eval(parse(text=formula$random)), data=gd, control=lmeControl(maxIter=input$maxit), na.action="na.omit")
 
 	if (length(chrSet)==1)
-	model <- lme(fixed=formula$fixed, random=~1|grp1, data=gd, control=lmeControl(maxIter=input$maxit), na.action=na.omit)
+	model <- lme(fixed=formula$fixed, random=~1|grp1, data=gd, control=lmeControl(maxIter=input$maxit), na.action="na.omit")
 
 	# Get output - Wald statistic for position fixed effect
 	############## need to put in a check for f2 here to get proper Wald####
