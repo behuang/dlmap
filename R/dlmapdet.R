@@ -124,7 +124,7 @@ function(input, algorithm, s.chr, chrSet, prevLoc=NULL, ...)
 	wald[jj] <- waldtest.asreml(model, list(list(which(model$coefficients$fixed[names(model$coefficients$fixed) %in% names]!=0), "zero")))$zres$zwald
 	else	{
 		cf <- summary(model, all=TRUE)$coef.fixed
-		wald[jj]] <- (cf[which(rownames(cf) %in% names),3])^2
+		wald[jj] <- (cf[which(rownames(cf) %in% names),3])^2
 		}
   }
 
